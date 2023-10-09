@@ -1,0 +1,60 @@
+Les jointures (joins) sont des opérations utilisées dans les bases de données relationnelles pour combiner des données provenant de plusieurs tables. Les deux types de jointures les plus couramment utilisés sont les jointures INNER JOIN et LEFT JOIN. Voici la différence entre les deux :
+
+1. INNER JOIN : Une jointure INNER JOIN renvoie uniquement les enregistrements qui ont des correspondances dans les deux tables. Cela signifie que seules les lignes ayant une valeur commune dans les colonnes de jointure des deux tables seront incluses dans le résultat final. Les enregistrements qui n'ont pas de correspondance dans l'autre table seront exclus du résultat.
+
+Exemple :
+
+Table A:
+ID  | Name
+----|------
+1   | John
+2   | Alice
+3   | Bob
+
+Table B:
+ID  | Age
+----|-----
+1   | 25
+3   | 30
+4   | 35
+
+Requête : SELECT * FROM TableA INNER JOIN TableB ON TableA.ID = TableB.ID
+
+Résultat :
+ID  | Name | Age
+----|------|-----
+1   | John | 25
+3   | Bob  | 30
+
+Dans cet exemple, seuls les enregistrements avec les ID 1 et 3 ont une correspondance dans les deux tables, et ils sont inclus dans le résultat.
+
+2. LEFT JOIN : Une jointure LEFT JOIN renvoie tous les enregistrements de la table de gauche (table A) et les enregistrements correspondants de la table de droite (table B). Si un enregistrement de la table de gauche n'a pas de correspondance dans la table de droite, les colonnes de la table de droite auront des valeurs NULL dans le résultat.
+
+Exemple :
+
+Table A:
+ID  | Name
+----|------
+1   | John
+2   | Alice
+3   | Bob
+
+Table B:
+ID  | Age
+----|-----
+1   | 25
+3   | 30
+4   | 35
+
+Requête : SELECT * FROM TableA LEFT JOIN TableB ON TableA.ID = TableB.ID
+
+Résultat :
+ID  | Name | Age
+----|------|-----
+1   | John | 25
+2   | Alice| NULL
+3   | Bob  | 30
+
+Dans cet exemple, tous les enregistrements de la table A sont inclus dans le résultat. L'enregistrement avec l'ID 2 n'a pas de correspondance dans la table B, donc les colonnes de la table B (Age) ont des valeurs NULL dans le résultat.
+
+En résumé, une jointure INNER JOIN renvoie uniquement les enregistrements avec des correspondances dans les deux tables, tandis qu'une jointure LEFT JOIN renvoie tous les enregistrements de la table de gauche et les correspondances de la table de droite (avec des valeurs NULL si nécessaire).
